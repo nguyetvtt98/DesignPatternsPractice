@@ -1,5 +1,9 @@
 import org.junit.jupiter.api.Test;
 
+import abstractfactory.databaseconnector.DatabaseConnector;
+import abstractfactory.databaseconnector.DatabaseFactoryRegistry;
+import abstractfactory.databaseconnector.OracleFactory;
+import abstractfactory.databaseconnector.PostgresFactory;
 import abstractfactory.documentgenerator.DocumentCreator;
 import abstractfactory.documentgenerator.DocumentFactoryRegistry;
 import abstractfactory.documentgenerator.DocxDocumentFactory;
@@ -42,5 +46,13 @@ public class AbstractFactoryTest {
 			);
 		documentCreator.createDocument("PDF", "Hello", "Goodbye");
 		documentCreator.createDocument("DOCX", "Hello", "Goodbye");
+	}
+
+	@Test
+	public void testDbConnector() {
+		DatabaseConnector databaseConnector = new DatabaseConnector(new DatabaseFactoryRegistry().register("Oracle", OracleFactory::new)
+				.register("Postgres", PostgresFactory::new)
+		);
+		databaseConnector.connectToDb("Oracle", "this is Oracle connection", "this is Oracle command");
 	}
 }
