@@ -1,11 +1,11 @@
 package abstractfactory.uitoolkit;
 
-public class LightTextField implements TextField {
+public class HighContrastTextField implements TextField {
 
 	private String text = "";
 	@Override
 	public String render() {
-		return "LightTextField[value=" + text + "]";
+		return "HighContrastTextField[value=" + text + "]";
 	}
 
 	@Override

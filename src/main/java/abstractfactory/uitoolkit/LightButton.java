@@ -10,6 +10,7 @@ public class LightButton implements Button {
 	@Override
 	public void onClick(Runnable action) {
 		this.action = action == null ? () -> {} : action;
+		click();
 	}
 
 	public void click() {

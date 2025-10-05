@@ -1,11 +1,10 @@
 package abstractfactory.uitoolkit;
 
-public class DarkButton implements Button {
-
+public class HighContrastButton implements Button {
 	private Runnable action = () -> {};
 	@Override
 	public String render() {
-		return "DarkButton[label=Submit]";
+		return "HighContrastButton[label=Submit]";
 	}
 
 	@Override
