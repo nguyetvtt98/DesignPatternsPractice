@@ -1,6 +1,6 @@
 package abstractfactory.uitoolkit;
 
-public class FormComposer {
+public class  FormComposer {
 	private final UIFactoryRegistry registry;
 	public FormComposer(UIFactoryRegistry registry) {
 		this.registry = registry;

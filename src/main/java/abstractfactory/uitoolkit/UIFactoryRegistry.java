@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 public class UIFactoryRegistry {
 
 	private final Map<String, Supplier<UIFactory>> factoryMap = new HashMap<>();
-	public UIFactoryRegistry registrer(String key, Supplier<UIFactory> supplier) {
+	public UIFactoryRegistry register(String key, Supplier<UIFactory> supplier) {
 		factoryMap.put(Objects.requireNonNull(key), supplier);
 		return this;
 	}

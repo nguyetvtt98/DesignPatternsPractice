@@ -1,5 +1,12 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
+
+import factorymethod.cache.CacheAccessor;
+import factorymethod.cache.CacheFactory;
+import factorymethod.cache.CacheType;
+import factorymethod.cache.InstructionCacheAccessor;
+import factorymethod.cache.SopFilterCacheAccessor;
 import factorymethod.documents.Document;
 import factorymethod.documents.DocumentExporter;
 import factorymethod.documents.DocumentWriter;
@@ -74,5 +81,14 @@ public class FactoryMethodTest {
 		paymentService.doPayment(visaProcessor, 100);
 		PaymentProcessor paymentProcessor = new PaypalProcessor();
 		paymentService.doPayment(paymentProcessor, 100000);
+	}
+
+	@Test
+	public void testCacheAccessor() {
+		CacheFactory cacheFactory = new CacheFactory();
+		cacheFactory.register(CacheType.SOP_FILTER, new SopFilterCacheAccessor());
+		cacheFactory.register(CacheType.INSTRUCTION, new InstructionCacheAccessor());
+		cacheFactory.of(CacheType.SOP_FILTER).putToCache(new UUID(1, 0), "SopFilterCache1");
+		cacheFactory.of(CacheType.INSTRUCTION).putToCache(new UUID(2, 1), "InstructionCache1");
 	}
 }
